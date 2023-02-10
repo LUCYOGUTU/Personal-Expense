@@ -57,7 +57,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Personal Expense Tracker'),
+        title: const Text(
+          'Personal Expense Tracker',
+        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
