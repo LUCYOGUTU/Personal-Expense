@@ -28,12 +28,12 @@ class MyApp extends StatelessWidget {
           onSurface: Colors.white,
         ),
         fontFamily: 'Quicksand',
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           headline6: TextStyle(
             fontFamily: 'OpenSans',
             fontWeight: FontWeight.bold,
             fontSize: 16,
-            color: Theme.of(context).colorScheme.primary,
+            color: Colors.green,
           ),
         ),
         appBarTheme: const AppBarTheme(

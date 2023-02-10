@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColorDark,
         title: const Text(
           'Personal Expense Tracker',
         ),

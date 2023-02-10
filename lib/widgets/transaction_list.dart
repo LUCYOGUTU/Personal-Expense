@@ -34,50 +34,45 @@ class TransactionList extends StatelessWidget {
               children: [
                 ...transactions.map((tx) {
                   return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 2.0,
-                              ),
-                            ),
+                    elevation: 5,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 25,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FittedBox(
                             child: Text(
                               '\$ ${tx.amount.toStringAsFixed(2)}',
-                              style: Theme.of(context).textTheme.headline6,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  tx.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  // DateFormat('yyyy-MM-dd').format(tx.date),
-                                  DateFormat.yMMMd().format(tx.date),
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                        ),
+                      ),
+                      title: Text(
+                        tx.title,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      subtitle: Text(
+                        // DateFormat('yyyy-MM-dd').format(tx.date),
+                        DateFormat.yMMMd().format(tx.date),
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.delete,
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                        onPressed: () {},
                       ),
                     ),
                   );
