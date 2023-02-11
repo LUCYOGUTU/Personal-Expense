@@ -73,20 +73,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final appBar = AppBar(
+      backgroundColor: Theme.of(context).primaryColorDark,
+      title: const Text(
+        'Personal Expense Tracker',
+      ),
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () => _showModalSheet(context),
+        ),
+      ],
+    );
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColorDark,
-        title: const Text(
-          'Personal Expense Tracker',
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () => _showModalSheet(context),
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -94,12 +96,24 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Chart(
-                  recentTransactions: _recentTransactions,
+                SizedBox(
+                  height: (mediaQuery.size.height -
+                          appBar.preferredSize.height -
+                          mediaQuery.padding.top) *
+                      0.25,
+                  child: Chart(
+                    recentTransactions: _recentTransactions,
+                  ),
                 ),
-                TransactionList(
-                  transactions: transactions,
-                  deleteTransaction: _deleteTransaction,
+                SizedBox(
+                  height: (mediaQuery.size.height -
+                          appBar.preferredSize.height -
+                          mediaQuery.padding.top) *
+                      0.75,
+                  child: TransactionList(
+                    transactions: transactions,
+                    deleteTransaction: _deleteTransaction,
+                  ),
                 ),
               ],
             ),

@@ -51,90 +51,98 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(
+          top: 16.0,
+          right: 16.0,
+          left: 16.0,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 16.0,
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Add New Transaction',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          TextField(
-            decoration: const InputDecoration(
-              labelText: 'Title:',
-              labelStyle: TextStyle(
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Add New Transaction',
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Theme.of(context).colorScheme.secondary,
               ),
-              border: OutlineInputBorder(),
             ),
-            onSubmitted: (_) => _submitData(),
-            controller: titleController,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextField(
-            decoration: const InputDecoration(
-              labelText: 'Amount:',
-              labelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-              border: OutlineInputBorder(),
+            const SizedBox(
+              height: 20,
             ),
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            // onChanged: (value) {
-            //   amountInput = value;
-            // },
-            onSubmitted: (_) => _submitData(),
-            controller: amountController,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                selectedDate == null
-                    ? 'No Date Chosen'
-                    : DateFormat.yMd().format(
-                        selectedDate!,
-                      ),
-              ),
-              TextButton(
-                onPressed: _datePicker,
-                child: Text(
-                  'Choose Date',
-                  style: Theme.of(context).textTheme.headline6,
+            TextField(
+              decoration: const InputDecoration(
+                labelText: 'Title:',
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
+                border: OutlineInputBorder(),
               ),
-            ],
-          ),
-          OutlinedButton(
-            onPressed: _submitData,
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.primary,
+              onSubmitted: (_) => _submitData(),
+              controller: titleController,
             ),
-            child: Text(
-              "Add Transaction",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline6,
+            const SizedBox(
+              height: 10,
             ),
-          )
-        ],
+            TextField(
+              decoration: const InputDecoration(
+                labelText: 'Amount:',
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+                border: OutlineInputBorder(),
+              ),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
+              // onChanged: (value) {
+              //   amountInput = value;
+              // },
+              onSubmitted: (_) => _submitData(),
+              controller: amountController,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  selectedDate == null
+                      ? 'No Date Chosen'
+                      : DateFormat.yMd().format(
+                          selectedDate!,
+                        ),
+                ),
+                TextButton(
+                  onPressed: _datePicker,
+                  child: Text(
+                    'Choose Date',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                ),
+              ],
+            ),
+            OutlinedButton(
+              onPressed: _submitData,
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.primary,
+              ),
+              child: Text(
+                "Add Transaction",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
