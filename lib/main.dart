@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           background: Colors.white,
           onBackground: Colors.black,
           surface: Colors.white,
-          onSurface: Colors.white,
+          onSurface: Colors.black,
         ),
         fontFamily: 'Quicksand',
         textTheme: const TextTheme(
